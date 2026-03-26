@@ -1,0 +1,32 @@
+1. Build the image and push to registry
+2. Then create a manifest file to pull the image and deploy in kubernetes
+
+
+# create the namespace 
+kubectl apply -f namespace.yaml
+
+# build image
+docker build -t haripalepu/mongodb:v1 .
+
+# push to docker hub
+docker login 
+enter username and password
+docker push haripalepu/mongodb:v1
+
+
+# Run the application
+create a manifest file in the same folder
+kubectl apply -f manifest.yaml
+
+
+# To set custom namespace as default namespace then no need to give -n
+sudo git clone https://github.com/ahmetb/kubectx /opt/kubectx
+sudo ln -s /opt/kubectx/kubens /usr/local/bin/kubens
+kubens <Namespace_name>
+ 
+
+
+kubectl logs <pod_name>
+
+
+
